@@ -1,0 +1,50 @@
+{
+    "name": "simtabi/laflamoji",
+    "description": "A package to easily make use of country flags, and emojis in your Laravel Blade views.",
+    "keywords": ["Blade", "Country flags", "Laravel"],
+    "homepage": "https://github.com/simtabi/blade-country-flags",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0",
+        "illuminate/contracts": "^7.14|^8.0",
+        "illuminate/filesystem": "^7.14|^8.0",
+        "illuminate/support": "^8.0",
+        "blade-ui-kit/blade-icons": "^1.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.18",
+        "pestphp/pest": "^1.4",
+        "spatie/pest-plugin-snapshots": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Simtabi\\Laflamoji\\": "src"
+        },
+        "files": [
+            "helpers/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Simtabi\\Laflamoji\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Simtabi\\Laflamoji\\Providers\\LaflamojiServiceProvider"
+            ],
+            "aliases": {
+                "Laflamoji": "Simtabi\\Laflamoji\\Facades\\LaflamojiFacade"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "foxy": {
+            "enabled": false
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
