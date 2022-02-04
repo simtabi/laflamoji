@@ -48,15 +48,15 @@ class LaflamojiServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                self::PATH . 'config/laflamoji.php' => config_path('laflamoji.php'),
+                self::PATH . 'config/laflamoji.php'   => config_path('laflamoji.php'),
             ], 'laflamoji:config');
 
             $this->publishes([
-                self::PATH . 'resources/assets/media'       => public_path('vendor/laflamoji'),
+                self::PATH . 'resources/assets/media' => public_path('vendor/laflamoji'),
             ], 'laflamoji:assets');
 
             $this->publishes([
-                self::PATH . 'resources/views'     => resource_path('views/vendor/laflamoji'),
+                self::PATH . 'resources/views'        => resource_path('views/vendor/laflamoji'),
             ], 'laflamoji:views');
         }
     }
