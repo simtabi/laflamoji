@@ -63,7 +63,6 @@ Laflag also offers the ability to use features from Blade Icons like default cla
 You may configure the default ratio to use, and default css classes to add:
 
 ```bash
-
 # publish config files
 php artisan vendor:publish --tag=laflamoji:config
 
