@@ -12,14 +12,18 @@ use Laflamoji;
 class LaflamojiServiceProvider extends ServiceProvider
 {
 
-    public const PATH = __DIR__ . '/../../';
+    private string $packageName = 'laflamoji';
+    private const  PACKAGE_PATH = __DIR__ . '/../../';
 
     public function register()
     {
-        $this->mergeConfigFrom(self::PATH . 'config/laflamoji.php', 'laflamoji');
+        $this->loadTranslationsFrom(self::PACKAGE_PATH . "resources/lang/", $this->packageName);
+        $this->loadMigrationsFrom(self::PACKAGE_PATH.'/../database/migrations');
+        $this->loadViewsFrom(self::PACKAGE_PATH . "resources/views", $this->packageName);
+        $this->mergeConfigFrom(self::PACKAGE_PATH . "config/{$this->packageName}.php", $this->packageName);
 
         $this->app->singleton(FlagFactory::class, function (Application $app) {
-            $config = $app->make('config')->get('laflamoji');
+            $config = $app->make('config')->get($this->packageName);
 
             return new FlagFactory(new Filesystem(),
                 $config['ratio'] ?? '',
@@ -44,21 +48,29 @@ class LaflamojiServiceProvider extends ServiceProvider
         $this->registerConsoles();
     }
 
-    private function registerConsoles()
+    private function registerConsoles(): static
     {
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                self::PATH . 'config/laflamoji.php'   => config_path('laflamoji.php'),
-            ], 'laflamoji:config');
+        if ($this->app->runningInConsole())
+        {
 
             $this->publishes([
-                self::PATH . 'resources/assets/media' => public_path('vendor/laflamoji'),
-            ], 'laflamoji:assets');
+                self::PACKAGE_PATH . "config/{$this->packageName}.php" => config_path("{$this->packageName}.php"),
+            ], "{$this->packageName}:config");
 
             $this->publishes([
-                self::PATH . 'resources/views'        => resource_path('views/vendor/laflamoji'),
-            ], 'laflamoji:views');
+                self::PACKAGE_PATH . "public"                          => public_path("vendor/{$this->packageName}"),
+            ], "{$this->packageName}:assets");
+
+            $this->publishes([
+                self::PACKAGE_PATH . "resources/views"                 => resource_path("views/vendor/{$this->packageName}"),
+            ], "{$this->packageName}:views");
+
+            $this->publishes([
+                self::PACKAGE_PATH . "resources/lang"                  => $this->app->langPath("vendor/{$this->packageName}"),
+            ], "{$this->packageName}:translations");
         }
+
+        return $this;
     }
 
 }
