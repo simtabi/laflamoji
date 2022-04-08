@@ -20,7 +20,7 @@ class LaflamojiServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(self::PACKAGE_PATH . "resources/lang/", $this->packageName);
         $this->loadMigrationsFrom(self::PACKAGE_PATH.'/../database/migrations');
         $this->loadViewsFrom(self::PACKAGE_PATH . "resources/views", $this->packageName);
-        $this->mergeConfigFrom(self::PACKAGE_PATH . "config/{$this->packageName}.php", $this->packageName);
+        $this->mergeConfigFrom(self::PACKAGE_PATH . "config/config.php", $this->packageName);
 
         $this->app->singleton(FlagFactory::class, function (Application $app) {
             $config = $app->make('config')->get($this->packageName);
@@ -54,7 +54,7 @@ class LaflamojiServiceProvider extends ServiceProvider
         {
 
             $this->publishes([
-                self::PACKAGE_PATH . "config/{$this->packageName}.php" => config_path("{$this->packageName}.php"),
+                self::PACKAGE_PATH . "config/config.php"               => config_path("{$this->packageName}.php"),
             ], "{$this->packageName}:config");
 
             $this->publishes([
