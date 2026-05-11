@@ -2,7 +2,23 @@
     <img src="https://github.com/simtabi/laflamoji/raw/main/laflamoji.png" width="1280" title="Laflamoji">
 </p>
 
-# Laflamoji — Use Country Flags, and Emoji's in your Laravel Projects
+> ## ⚠️ DEPRECATED -- do not use for new projects
+>
+> This package has been **split into two focused, Ichava-conformant
+> replacements**. See [`DEPRECATED.md`](DEPRECATED.md) for the full
+> migration guide.
+>
+> | You were using | Replace with |
+> |---|---|
+> | Emojis (`@lamoji`, Twemoji SVGs) | [`ichava/emoji-sets`](https://github.com/ichava/emoji-sets) |
+> | Country flag SVGs (`@laflag`) | `ichava/flag-icons` *(landing soon)* |
+>
+> The replacement packages target PHP 8.3+ / Laravel 13, ship Unicode 17
+> emojis (Twemoji v17 + OpenMoji color/black), CLDR-categorised, with
+> human-readable slug filenames instead of hex codepoints. No further
+> releases will ship from this repo.
+
+# Laflamoji -- Use Country Flags, and Emoji's in your Laravel Projects
 
 A package to easily make use of country flags in your Laravel Blade views.
 

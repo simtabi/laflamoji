@@ -1,9 +1,10 @@
 {
     "name": "simtabi/laflamoji",
-    "description": "A package to easily make use of country flags, and emojis in your Laravel Blade views.",
-    "keywords": ["Blade", "Country flags", "Laravel"],
+    "description": "[DEPRECATED -- use ichava/emoji-sets] A package to easily make use of country flags, and emojis in your Laravel Blade views.",
+    "keywords": ["Blade", "Country flags", "Laravel", "deprecated"],
     "homepage": "https://github.com/simtabi/blade-country-flags",
     "license": "MIT",
+    "abandoned": "ichava/emoji-sets",
     "require": {
         "php": "^8.0",
         "blade-ui-kit/blade-icons": "^1.2.2"
